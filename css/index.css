@@ -41,16 +41,17 @@ body,html {
     border-radius: 10px;
     margin-top: 10px;
     padding: 20px;
+    color: blanchedalmond;
 }
 
-.buttons .actions{
-    background-color: #27ae60;
+.actions{
+    background-color: #192a56;
     border-radius: 10px;
     border-style: solid;
-    border-color:#27ae60;
+    border-color: #192a56;
     width: 70px;
     height: 30px;
-    color: blanchedalmond;
+    color: white;
     font-weight: bold;
     font-size: 1em;
 }
@@ -85,3 +86,59 @@ body,html {
     border-color: darkolivegreen;
     padding-left: 20px;
 }
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+  input[type=fone] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+
+  input[type=submit]{
+    background-color: #192a56;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #192a56;
+    width: 70px;
+    height: 30px;
+    color: blanchedalmond;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+  @media only screen and (max-width: 650px) 
+  {
+    .table_contacts{
+        margin-top: 5px;
+        width: 90%;
+    }
+    
+  }
+  
+  @media only screen and (max-width: 420px) 
+  {
+    .table_contacts{
+        margin-top: 5px;
+        width: 80%;
+    }
+    .table_contacts td{
+        padding-left: 1px;
+        font-size: 15px;
+    }
+    
+  }

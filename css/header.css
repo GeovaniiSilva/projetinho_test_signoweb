@@ -12,4 +12,20 @@
     padding-top: 20px;
     font-size: 3em;
     color: #34495e;
+
+    
+}
+
+@media only screen and (max-width: 650px) 
+{
+  .header h1{
+      font-size: 2em;
+  }
+}
+
+@media only screen and (max-width: 300px) 
+{
+  .header h1{
+      font-size: 1.5em;
+  }
 }

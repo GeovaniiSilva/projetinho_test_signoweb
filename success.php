@@ -4,21 +4,19 @@
         <title>Successo!</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+        <link rel="stylesheet" href="/teste/css/header.css">
+        <link rel="stylesheet" href="/teste/css/index.css">
+        <link rel="stylesheet" href="/teste/css/footer.css">
     </head>
-    <body class="bg-primary">
+    <body>
         <?php
             include_once "templates/header.php";
         ?>
-        <div class="container bg-info">
-            <h2>Contato salvo com sucesso!</h2>
+        <div class="content">
+        <h2>Contato salvo com sucesso!</h2>
+        <a href="/teste/"><b>Ver contatos</b></a>
         </div>
-        <div class="container bg-warning">
-            <div class="row">
-                <div class="col-sm-12">
-                    <a href="/teste" class="btn btn-primary">Voltar</a>
-                </div>
-            </div>
-        </div>
+        <?php include_once "templates/footer.php"; ?>
+        
     </body>
 </html>

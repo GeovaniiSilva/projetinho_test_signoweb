@@ -26,19 +26,28 @@
         ?>
         <div class="content">
             <div class="contact">
+                <?php if(isset($msg)){ echo $msg; } ?>
                 <?php if($contact){ ?>
                     <h2><?php echo ucwords($contact->get_name()); ?></h2>
-                    <p>Email: <?php echo $contact->get_email(); ?></p>
-                    <p>Telefone: <?php echo $contact->get_email(); ?></p>
-                    <p>Nascimento: <?php echo $contact->get_birth(); ?></p>
-                    <p>Endereço: <?php echo $contact->get_email(); ?></p>
+                    <p><b>Email:</b> <?php echo $contact->get_email(); ?></p>
+                    <p><b>Telefone:</b> <?php echo $contact->get_phone(); ?></p>
+                    <p><b>Nascimento:</b> <?php echo strftime("%d/%m/%Y", strtotime($contact->get_birth())); ?></p>
+                    <p><b>Endereço:</b> <?php echo $contact->get_address(); ?></p>
                 <?php }?>
             </div>    
         </div>
         <div class="buttons">
-            <a href="/teste" class="btn btn-primary"><button class="actions">Voltar</button></a>
-            <?php echo "<a href='/teste/edit_contact.php/?id=".$contact->get_id()."'><button class='actions'>Editar</button></a>"; ?>
-            <a href=""><button class="actions">Deletar</button></a>
+            
+            <?php
+            if(!is_null($contact)){ 
+                echo "<form action='/teste/delete_contact.php' method='post'><input type='hidden' name='id' value='".$contact->get_id()."'><input type='submit' value='Deletar'></form>";
+                echo "<a href='/teste/edit_contact.php/?id=".$contact->get_id()."'><button class='actions'>Editar</button></a>"; 
+            
+            }
+            echo "<a href='/teste' class='btn btn-primary'><button class='actions'>Voltar</button></a>";
+            
+            ?>
+            
         </div>
         <?php include_once "templates/footer.php"; ?>
     </body>

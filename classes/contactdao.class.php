@@ -33,7 +33,7 @@ class ContactDAO {
 
     //Função que busca um contato específico
     public function detail_contact($id){
-        $contact = new Contact();
+        $contact = null;
         try{
             $result = $this->connection->get_connection()->prepare('select * from contact where id = :id');
             $result->execute(array(
@@ -41,7 +41,7 @@ class ContactDAO {
             ));
             
             while($data = $result->fetch(PDO::FETCH_ASSOC)){
-                
+                $contact = new Contact();
                 $contact->set_id($data['id']);
                 $contact->set_name($data['name']);
                 $contact->set_email($data['email']);
@@ -51,6 +51,7 @@ class ContactDAO {
             }
         }catch(PDOException $e){
             echo "Error: " . $e->getMessage();
+            $contact = null;
         }
         return $contact;
     }
@@ -81,6 +82,18 @@ class ContactDAO {
                 ':phone' => $contact->get_phone(),
                 ':birth' => $contact->get_birth(),
                 ':address' => $contact->get_address()
+            ));
+            return true;
+        }catch(PDOException $e){
+            return false;
+        }
+    }
+
+    public function delete_contact($id){
+        try{
+            $stmt = $this->connection->get_connection()->prepare('delete from contact where id=:id');
+            $stmt->execute(array(
+                ':id' => $id
             ));
             return true;
         }catch(PDOException $e){
