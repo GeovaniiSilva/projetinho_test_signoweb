@@ -10,18 +10,20 @@
         $error = false;
         $date_birth = null;
         $phone_contact = null;
-        $errors = array();
+        $errors = "obrigatórios [";
 
-        
+        $date_birth = str_replace("/", "-", $_POST['birth']);
         $date_birth = date('Y-m-d', strtotime($_POST['birth']));
 
-
+        echo gettype($date_birth);
         foreach($required as $field) {
         if (empty($_POST[$field])) {
             $error = true;
-            array_push($errors, $field." é obrigatório!");
+            $errors .= $field." ";
         }
         }
+        $errors .= "]";
+        
         if(!$error){
             
             $contact->set_name(trim($_POST['name']));
@@ -55,6 +57,11 @@
         ?>
         <div class="content">
             <h2>Registrar contato</h2>
+            <?php if(isset($errors)){  ?>
+                <ul>
+                    <?php echo "<li>". $errors . "</li>" ?>
+                </ul>
+            <?php  } ?>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
                 Nome completo <input type="text" name="name" id="name"> <br>
                 Email <input type="email" name="email" id="email"> <br>
@@ -64,7 +71,7 @@
                     if (v.match(/^\d{2}$/) !== null) {
                         this.value = v + '-';
                     }"
-                    maxlength="10" placeholder="11-11111-1111"> <br>
+                    maxlength="12" placeholder="11-11111-1111"> <br>
                 Data de Nascimento <input type="text" name="birth" id="birth"
                 onkeyup="
                     var v = this.value;
@@ -76,11 +83,6 @@
                     maxlength="10" placeholder="dd-mm-aaaa"> <br>
                 Endereço completo <input type="text" name="address" id="address"> <br>
                 <input type="submit" value="Salvar" class="actions">
-                <?php if(isset($errors)){ foreach($errors as $erro){ ?>
-                    <ul>
-                        <?php echo "<li>". $erro . "</li>" ?>
-                    </ul>
-                <?php } } ?>
             </form>
         </div>
         <div class="buttons">

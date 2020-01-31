@@ -10,16 +10,18 @@
         $error = false;
         $date_birth = null;
         $phone_contact = null;
-        $errors = array();
+        $errors = "obrigatórios [";
 
+        $date_birth = str_replace("/", "-", $_POST['birth']);
         $date_birth = date('Y-m-d', strtotime($_POST['birth']));
 
         foreach($required as $field) {
         if (empty($_POST[$field])) {
             $error = true;
-            array_push($errors, $field." é obrigatório!");
+            $errors .= $field." ";
         }
         }
+        $errors .= "]";
 
         if(!$errors){
             $contact->set_name($_POST['name']);

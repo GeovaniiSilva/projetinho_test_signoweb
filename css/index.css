@@ -9,7 +9,6 @@ body,html {
     box-sizing: border-box;
     background-color: #3498db;
     width: 90%;
-    height: 80%;
     margin: auto;
     border-radius: 10px;
     margin-top: 10px;
@@ -36,7 +35,6 @@ body,html {
     box-sizing: border-box;
     background-color: #3498db;
     width: 90%;
-    height: 100%;
     margin: auto;
     border-radius: 10px;
     margin-top: 10px;
