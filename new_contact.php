@@ -13,9 +13,9 @@
         $errors = "obrigatórios [";
 
         $date_birth = str_replace("/", "-", $_POST['birth']);
-        $date_birth = date('Y-m-d', strtotime($_POST['birth']));
+        $date_birth = date('Y-m-d', strtotime($date_birth));
 
-        echo gettype($date_birth);
+
         foreach($required as $field) {
         if (empty($_POST[$field])) {
             $error = true;
@@ -23,7 +23,7 @@
         }
         }
         $errors .= "]";
-        
+
         if(!$error){
             
             $contact->set_name(trim($_POST['name']));
@@ -62,7 +62,7 @@
                     <?php echo "<li>". $errors . "</li>" ?>
                 </ul>
             <?php  } ?>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" class="form">
                 Nome completo <input type="text" name="name" id="name"> <br>
                 Email <input type="email" name="email" id="email"> <br>
                 Telefone <input type="fone" name="phone" id="phone"
